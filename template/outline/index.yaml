@@ -42,8 +42,7 @@ spec:
       required: true
       options:
         - oidc
-        - google
-        - slack
+        - email
     secret_key:
       description: 'Secret key for encrypting data (32 bytes hex)'
       type: string
@@ -84,30 +83,6 @@ spec:
       default: ''
       required: true
       if: inputs.auth_provider === 'oidc'
-    google_client_id:
-      description: 'Google OAuth Client ID'
-      type: string
-      default: ''
-      required: true
-      if: inputs.auth_provider === 'google'
-    google_client_secret:
-      description: 'Google OAuth Client Secret'
-      type: string
-      default: ''
-      required: true
-      if: inputs.auth_provider === 'google'
-    slack_client_id:
-      description: 'Slack OAuth Client ID'
-      type: string
-      default: ''
-      required: true
-      if: inputs.auth_provider === 'slack'
-    slack_client_secret:
-      description: 'Slack OAuth Client Secret'
-      type: string
-      default: ''
-      required: true
-      if: inputs.auth_provider === 'slack'
     smtp_enabled:
       description: 'Enable SMTP for sending emails'
       type: boolean
@@ -118,31 +93,31 @@ spec:
       type: string
       default: ''
       required: true
-      if: inputs.smtp_enabled === 'true'
+      if: inputs.smtp_enabled === 'true' || inputs.auth_provider === 'email'
     smtp_port:
       description: 'SMTP Server Port'
       type: string
       default: '587'
       required: true
-      if: inputs.smtp_enabled === 'true'
+      if: inputs.smtp_enabled === 'true' || inputs.auth_provider === 'email'
     smtp_username:
       description: 'SMTP Username'
       type: string
       default: ''
       required: true
-      if: inputs.smtp_enabled === 'true'
+      if: inputs.smtp_enabled === 'true' || inputs.auth_provider === 'email'
     smtp_password:
       description: 'SMTP Password'
       type: string
       default: ''
       required: true
-      if: inputs.smtp_enabled === 'true'
+      if: inputs.smtp_enabled === 'true' || inputs.auth_provider === 'email'
     smtp_from_email:
       description: 'SMTP From Email Address'
       type: string
       default: ''
       required: true
-      if: inputs.smtp_enabled === 'true'
+      if: inputs.smtp_enabled === 'true' || inputs.auth_provider === 'email'
 
 ---
 ${{ if(inputs.storage_type === 's3') }}
