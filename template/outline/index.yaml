@@ -61,19 +61,19 @@ spec:
       required: true
       if: inputs.auth_provider === 'oidc'
     oidc_auth_uri:
-      description: 'Casdoor path: /login/oauth/authorize. Full URL: https://<casdoor-public-domain>/login/oauth/authorize'
+      description: '/login/oauth/authorize'
       type: string
       default: ''
       required: true
       if: inputs.auth_provider === 'oidc'
     oidc_token_uri:
-      description: 'Casdoor path: /api/login/oauth/access_token. Same namespace URL: http://<casdoor-service-name>.<namespace>:8000/api/login/oauth/access_token'
+      description: '/api/login/oauth/access_token'
       type: string
       default: ''
       required: true
       if: inputs.auth_provider === 'oidc'
     oidc_userinfo_uri:
-      description: 'Casdoor path: /api/userinfo. Same namespace URL: http://<casdoor-service-name>.<namespace>:8000/api/userinfo'
+      description: '/api/userinfo'
       type: string
       default: ''
       required: true
@@ -560,7 +560,7 @@ spec:
               fi
 
               export SECRET_KEY="$(cat "$SECRET_KEY_FILE")"
-              exec yarn start
+              exec node ./build/server/index.js
           env:
             - name: NODE_ENV
               value: production
