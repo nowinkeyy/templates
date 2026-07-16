@@ -61,19 +61,19 @@ spec:
       required: true
       if: inputs.auth_provider === 'oidc'
     oidc_auth_uri:
-      description: 'OIDC Authorization URI. For Casdoor: https://<casdoor-public-domain>/login/oauth/authorize'
+      description: 'Casdoor path: /login/oauth/authorize. Full URL: https://<casdoor-public-domain>/login/oauth/authorize'
       type: string
       default: ''
       required: true
       if: inputs.auth_provider === 'oidc'
     oidc_token_uri:
-      description: 'OIDC Token URI. For Casdoor in the same namespace: http://<casdoor-service-name>.<namespace>:8000/api/login/oauth/access_token'
+      description: 'Casdoor path: /api/login/oauth/access_token. Same namespace URL: http://<casdoor-service-name>.<namespace>:8000/api/login/oauth/access_token'
       type: string
       default: ''
       required: true
       if: inputs.auth_provider === 'oidc'
     oidc_userinfo_uri:
-      description: 'OIDC User Info URI. For Casdoor in the same namespace: http://<casdoor-service-name>.<namespace>:8000/api/userinfo'
+      description: 'Casdoor path: /api/userinfo. Same namespace URL: http://<casdoor-service-name>.<namespace>:8000/api/userinfo'
       type: string
       default: ''
       required: true
