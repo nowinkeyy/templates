@@ -394,7 +394,7 @@ kind: StatefulSet
 metadata:
   name: ${{ defaults.app_name }}
   annotations:
-    originImageName: outlinewiki/outline:0.86
+    originImageName: outlinewiki/outline:1.9.1
     deploy.cloud.sealos.io/minReplicas: '1'
     deploy.cloud.sealos.io/maxReplicas: '1'
   labels:
@@ -544,7 +544,7 @@ spec:
               ephemeral-storage: 128Mi
       containers:
         - name: ${{ defaults.app_name }}
-          image: outlinewiki/outline:0.86
+          image: outlinewiki/outline:1.9.1
           imagePullPolicy: IfNotPresent
           command:
             - /bin/sh
